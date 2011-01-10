@@ -1,0 +1,38 @@
+<div class="post">
+<h2 class="title">Expenses</h2>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Cost</th>
+    <th>Expense category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @expenses.each do |expense| %>
+    <tr>
+      <td><%= expense.date %></td>
+      <td><%= expense.description %></td>
+      <td><%= expense.cost %></td>
+      <%
+      if expense.expense_category
+        expense_category = expense.expense_category.description
+      else
+        expense_category = "none"
+      end
+    %>
+      <td><%= expense_category  %></td>
+      <td><%= link_to 'Show', expense %></td>
+      <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+      <td><%= link_to 'Destroy', expense, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Expense', new_expense_path %>
+</div>

@@ -1,0 +1,25 @@
+<div class="post">
+<h2 class="title">Expense Categories</h2>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @expense_categories.each do |expense_category| %>
+  <tr>
+    <td><%= expense_category.description %></td>
+    <td><%= link_to 'Show', expense_category %></td>
+    <td><%= link_to 'Edit', edit_expense_category_path(expense_category) %></td>
+    <td><%= link_to 'Destroy', expense_category, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Expense category', new_expense_category_path %>
+</div>
